@@ -38,31 +38,53 @@ document.addEventListener('DOMContentLoaded', () => {
     icon.className = mainNav.classList.contains('open') ? 'fa fa-times' : 'fa fa-bars';
   });
 
-  // Desktop and Mobile dropdown toggle
-  document.querySelectorAll('.has-dropdown > a').forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const parent = link.parentElement;
-      
-      // Close other dropdowns
-      document.querySelectorAll('.has-dropdown').forEach(item => {
-        if (item !== parent) {
-          item.classList.remove('open');
-        }
+  // Desktop: Hover to open dropdown
+  // Mobile: Click to toggle dropdown
+  document.querySelectorAll('.has-dropdown').forEach(dropdown => {
+    const link = dropdown.querySelector('a');
+    
+    // Desktop hover behavior
+    if (window.innerWidth > 768) {
+      dropdown.addEventListener('mouseenter', () => {
+        dropdown.classList.add('open');
       });
       
-      // Toggle current dropdown
-      parent.classList.toggle('open');
+      dropdown.addEventListener('mouseleave', () => {
+        dropdown.classList.remove('open');
+      });
+    }
+    
+    // Mobile click behavior
+    link.addEventListener('click', (e) => {
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        dropdown.classList.toggle('open');
+      } else {
+        // On desktop, prevent default but allow hover to work
+        e.preventDefault();
+      }
     });
   });
 
-  // Close dropdown when clicking outside
+  // Close dropdown when clicking outside (mobile only)
   document.addEventListener('click', (e) => {
-    if (!e.target.closest('.has-dropdown')) {
+    if (window.innerWidth <= 768 && !e.target.closest('.has-dropdown')) {
       document.querySelectorAll('.has-dropdown').forEach(item => {
         item.classList.remove('open');
       });
     }
+  });
+
+  // Re-initialize on window resize
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      // Close all dropdowns on resize
+      document.querySelectorAll('.has-dropdown').forEach(item => {
+        item.classList.remove('open');
+      });
+    }, 250);
   });
 
   // Close nav when a link is clicked (mobile)
