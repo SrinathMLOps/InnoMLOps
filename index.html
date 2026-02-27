@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InnoMLOps – Enterprise MLOps & AI Engineering Solutions</title>
+  <meta name="description" content="UK-based MLOps consulting specializing in production ML systems, cloud architecture, and AI/LLM deployment for enterprise clients." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <span><i class="fa fa-envelope"></i> contact@innomlops.com</span>
+      <span><i class="fa fa-map-marker-alt"></i> UK-Based | Global Reach</span>
+      <div class="social-icons">
+        <a href="https://github.com/SrinathMLOps" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://twitter.com" target="_blank" aria-label="Twitter/X"><i class="fab fa-x-twitter"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER / NAV -->
+  <header id="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <img src="InnoMLOps.png" alt="InnoMLOps" class="logo-img" />
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <i class="fa fa-bars"></i>
+      </button>
+      <nav id="mainNav">
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li class="has-dropdown">
+            <a href="services.html">Services <i class="fa fa-chevron-down"></i></a>
+            <ul class="dropdown">
+              <li><a href="services.html#mlops">MLOps Engineering</a></li>
+              <li><a href="services.html#cloud">Cloud Architecture</a></li>
+              <li><a href="services.html#ai">AI/LLM Systems</a></li>
+              <li><a href="services.html#devops">DevOps & CI/CD</a></li>
+            </ul>
+          </li>
+          <li><a href="solutions.html">Solutions</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="tech-stack.html">Tech Stack</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="container hero-content">
+      <div class="hero-text">
+        <p class="hero-tag">Enterprise MLOps Consulting</p>
+        <h1>Production-Ready ML Systems<br/><span>Built for Scale</span></h1>
+        <p class="hero-sub">We architect, deploy, and maintain enterprise-grade ML infrastructure. From model development to production monitoring, we deliver end-to-end MLOps solutions that drive real business value.</p>
+        <div class="hero-btns">
+          <a href="#contact" class="btn btn-primary">Book a Strategy Call</a>
+          <a href="case-studies.html" class="btn btn-outline">View Case Studies</a>
+        </div>
+      </div>
+      <div class="hero-graphic">
+        <div class="circle c1"></div>
+        <div class="circle c2"></div>
+        <div class="circle c3"></div>
+      </div>
+    </div>
+    <div class="hero-wave">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#fff"/></svg>
+    </div>
+  </section>
+
+  <!-- FEATURES BAR -->
+  <section class="features-bar">
+    <div class="container features-grid">
+      <div class="feature-item">
+        <i class="fa fa-cloud"></i>
+        <div>
+          <h4>Multi-Cloud Expertise</h4>
+          <p>AWS, Azure, GCP certified solutions</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <i class="fa fa-rocket"></i>
+        <div>
+          <h4>Production-First</h4>
+          <p>Built for scale, reliability, and performance</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <i class="fa fa-shield-halved"></i>
+        <div>
+          <h4>Enterprise Security</h4>
+          <p>Compliance-ready ML infrastructure</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <i class="fa fa-chart-line"></i>
+        <div>
+          <h4>Measurable ROI</h4>
+          <p>Data-driven results that matter</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM STATEMENT -->
+  <section class="problem-section section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-tag">The Challenge</p>
+        <h2>ML Models That Never Make It to Production</h2>
+        <p class="section-sub">87% of ML projects fail to reach production. We solve the gap between data science and deployment.</p>
+      </div>
+      <div class="problem-grid">
+        <div class="problem-card">
+          <i class="fa fa-exclamation-triangle"></i>
+          <h3>Model Drift</h3>
+          <p>Performance degrades over time without proper monitoring and retraining pipelines</p>
+        </div>
+        <div class="problem-card">
+          <i class="fa fa-server"></i>
+          <h3>Infrastructure Complexity</h3>
+          <p>Managing Kubernetes, containers, and cloud resources requires specialized expertise</p>
+        </div>
+        <div class="problem-card">
+          <i class="fa fa-code-branch"></i>
+          <h3>CI/CD for ML</h3>
+          <p>Traditional DevOps doesn't account for data versioning and model lifecycle management</p>
+        </div>
+        <div class="problem-card">
+          <i class="fa fa-gauge-high"></i>
+          <h3>Scalability Issues</h3>
+          <p>What works in notebooks often fails under production load and real-world data</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES OVERVIEW -->
+  <section class="services section bg-light" id="services">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-tag">What We Do</p>
+        <h2>End-to-End MLOps Solutions</h2>
+        <p class="section-sub">From architecture design to production deployment and monitoring</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon"><i class="fa fa-diagram-project"></i></div>
+          <h3>MLOps Engineering</h3>
+          <p>Complete ML pipeline automation with Airflow, MLflow, and Kubeflow. Version control for data, models, and experiments.</p>
+          <a href="services.html#mlops" class="card-link">Learn More <i class="fa fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa fa-cloud"></i></div>
+          <h3>Cloud Architecture</h3>
+          <p>Multi-cloud infrastructure design and deployment on AWS, Azure, and GCP with Terraform and IaC best practices.</p>
+          <a href="services.html#cloud" class="card-link">Learn More <i class="fa fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa fa-brain"></i></div>
+          <h3>AI/LLM Systems</h3>
+          <p>Production deployment of large language models, RAG systems, and custom AI solutions with FastAPI and scalable inference.</p>
+          <a href="services.html#ai" class="card-link">Learn More <i class="fa fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa fa-infinity"></i></div>
+          <h3>DevOps & CI/CD</h3>
+          <p>Automated testing, deployment pipelines, and infrastructure as code for ML systems with GitHub Actions and Jenkins.</p>
+          <a href="services.html#devops" class="card-link">Learn More <i class="fa fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa fa-database"></i></div>
+          <h3>Data Engineering</h3>
+          <p>Scalable data pipelines, feature stores, and real-time processing with Spark, Kafka, and modern data stack.</p>
+          <a href="services.html#data" class="card-link">Learn More <i class="fa fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa fa-chart-simple"></i></div>
+          <h3>Monitoring & Observability</h3>
+          <p>Production monitoring with Prometheus, Grafana, and custom drift detection for model performance tracking.</p>
+          <a href="services.html#monitoring" class="card-link">Learn More <i class="fa fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES -->
+  <section class="industries section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-tag">Industry Solutions</p>
+        <h2>Tailored for Your Sector</h2>
+      </div>
+      <div class="industries-grid">
+        <div class="industry-card">
+          <i class="fa fa-chart-line"></i>
+          <h3>FinTech</h3>
+          <p>Algorithmic trading, fraud detection, risk modeling</p>
+        </div>
+        <div class="industry-card">
+          <i class="fa fa-heartbeat"></i>
+          <h3>Healthcare</h3>
+          <p>Diagnostic models, patient outcome prediction</p>
+        </div>
+        <div class="industry-card">
+          <i class="fa fa-shopping-cart"></i>
+          <h3>Retail</h3>
+          <p>Demand forecasting, recommendation systems</p>
+        </div>
+        <div class="industry-card">
+          <i class="fa fa-truck"></i>
+          <h3>Logistics</h3>
+          <p>Route optimization, predictive maintenance</p>
+        </div>
+        <div class="industry-card">
+          <i class="fa fa-lightbulb"></i>
+          <h3>Startups</h3>
+          <p>MVP to production, scalable ML infrastructure</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats-section">
+    <div class="container stats-grid">
+      <div class="stat-item">
+        <h3>50+</h3>
+        <p>ML Models Deployed</p>
+      </div>
+      <div class="stat-item">
+        <h3>99.9%</h3>
+        <p>Uptime SLA</p>
+      </div>
+      <div class="stat-item">
+        <h3>3</h3>
+        <p>Cloud Platforms</p>
+      </div>
+      <div class="stat-item">
+        <h3>24/7</h3>
+        <p>Production Support</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT FORM -->
+  <section class="contact section" id="contact">
+    <div class="container contact-inner">
+      <div class="contact-info">
+        <p class="section-tag">Get In Touch</p>
+        <h2>Start Your MLOps Journey</h2>
+        <p>Book a free 30-minute strategy call to discuss your ML infrastructure needs. We'll provide actionable insights even if we don't work together.</p>
+        <ul class="contact-details">
+          <li><i class="fa fa-envelope"></i> contact@innomlops.com</li>
+          <li><i class="fa fa-map-marker-alt"></i> United Kingdom</li>
+          <li><i class="fa fa-clock"></i> Response within 24 hours</li>
+        </ul>
+        <div class="social-icons contact-social">
+          <a href="https://github.com/SrinathMLOps" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://twitter.com" target="_blank"><i class="fab fa-x-twitter"></i></a>
+        </div>
+      </div>
+      <div class="contact-form-wrap">
+        <form id="enquiryForm" class="enquiry-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name *</label>
+              <input type="text" id="firstName" name="firstName" placeholder="John" required />
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name *</label>
+              <input type="text" id="lastName" name="lastName" placeholder="Smith" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" placeholder="john@company.com" required />
+          </div>
+          <div class="form-group">
+            <label for="company">Company Name *</label>
+            <input type="text" id="company" name="company" placeholder="Your Company Ltd" required />
+          </div>
+          <div class="form-group">
+            <label for="service">Service Required *</label>
+            <select id="service" name="service" required>
+              <option value="">-- Select a Service --</option>
+              <option value="mlops">MLOps Engineering</option>
+              <option value="cloud">Cloud Architecture</option>
+              <option value="ai">AI/LLM Systems</option>
+              <option value="devops">DevOps & CI/CD</option>
+              <option value="data">Data Engineering</option>
+              <option value="consulting">General Consulting</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Project Details *</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell us about your ML infrastructure challenges..." required></textarea>
+          </div>
+          <div class="form-group form-check">
+            <input type="checkbox" id="gdpr" name="gdpr" required />
+            <label for="gdpr">I agree to the <a href="privacy.html">Privacy Policy</a> and consent to being contacted. *</label>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">
+            <i class="fa fa-paper-plane"></i> Send Enquiry
+          </button>
+          <div id="formSuccess" class="form-success" style="display:none;">
+            <i class="fa fa-circle-check"></i> Thank you! We'll be in touch within 24 hours.
+          </div>
+          <div id="formError" class="form-error" style="display:none;">
+            <i class="fa fa-triangle-exclamation"></i> Please fill in all required fields.
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-col">
+        <a href="index.html" class="logo logo-light">
+          <img src="InnoMLOps.png" alt="InnoMLOps" class="logo-img-footer" />
+        </a>
+        <p>Enterprise MLOps consulting for production-ready ML systems. UK-based with global reach.</p>
+        <div class="social-icons">
+          <a href="https://github.com/SrinathMLOps" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://twitter.com" target="_blank"><i class="fab fa-x-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html#mlops">MLOps Engineering</a></li>
+          <li><a href="services.html#cloud">Cloud Architecture</a></li>
+          <li><a href="services.html#ai">AI/LLM Systems</a></li>
+          <li><a href="services.html#devops">DevOps & CI/CD</a></li>
+          <li><a href="services.html#data">Data Engineering</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="tech-stack.html">Tech Stack</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="careers.html">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Solutions</h4>
+        <ul>
+          <li><a href="solutions.html#fintech">AI for FinTech</a></li>
+          <li><a href="solutions.html#healthcare">AI for Healthcare</a></li>
+          <li><a href="solutions.html#retail">AI for Retail</a></li>
+          <li><a href="solutions.html#logistics">AI for Logistics</a></li>
+          <li><a href="solutions.html#startups">AI for Startups</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; 2025 InnoMLOps. All rights reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Use</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

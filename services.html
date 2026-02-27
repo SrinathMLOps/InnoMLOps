@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services – InnoMLOps</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <span><i class="fa fa-envelope"></i> contact@innomlops.com</span>
+      <span><i class="fa fa-map-marker-alt"></i> UK-Based | Global Reach</span>
+      <div class="social-icons">
+        <a href="https://github.com/SrinathMLOps" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+  </div>
+  <header id="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo"><img src="InnoMLOps.png" alt="InnoMLOps" class="logo-img" /></a>
+      <button class="nav-toggle" id="navToggle"><i class="fa fa-bars"></i></button>
+      <nav id="mainNav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html" class="active">Services</a></li>
+          <li><a href="solutions.html">Solutions</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="tech-stack.html">Tech Stack</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>Our Services</h1>
+      <p>End-to-end MLOps solutions for production ML systems</p>
+    </div>
+  </section>
+
+  <section class="section" id="mlops">
+    <div class="container">
+      <div class="service-detail">
+        <h3><i class="fa fa-diagram-project"></i> MLOps Engineering</h3>
+        <h4>Problem</h4>
+        <p>Data science teams struggle to move models from notebooks to production. Manual deployment processes are error-prone, models drift without detection, and there's no systematic way to version experiments or reproduce results.</p>
+        <h4>Solution</h4>
+        <p>We build complete MLOps pipelines that automate the entire ML lifecycle:</p>
+        <ul>
+          <li>Automated training pipelines with Airflow and Kubeflow</li>
+          <li>Experiment tracking and model versioning with MLflow</li>
+          <li>Feature stores for consistent data access</li>
+          <li>Automated model validation and testing</li>
+          <li>CI/CD pipelines for ML code and models</li>
+          <li>Model registry and deployment automation</li>
+        </ul>
+        <h4>Tools Used</h4>
+        <p>MLflow, Airflow, Kubeflow, DVC, Great Expectations, Feast</p>
+        <h4>Outcome</h4>
+        <p>Reduce model deployment time from weeks to hours. Ensure reproducibility and enable rapid experimentation with confidence.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light" id="cloud">
+    <div class="container">
+      <div class="service-detail">
+        <h3><i class="fa fa-cloud"></i> Cloud Architecture (AWS / Azure / GCP)</h3>
+        <h4>Problem</h4>
+        <p>ML workloads require specialized infrastructure - GPU instances, distributed training, scalable inference, and cost optimization. Managing this across cloud providers is complex.</p>
+        <h4>Solution</h4>
+        <p>We design and implement cloud-native ML infrastructure:</p>
+        <ul>
+          <li>Multi-cloud architecture design and implementation</li>
+          <li>Kubernetes clusters (EKS, AKS, GKE) for ML workloads</li>
+          <li>Auto-scaling inference endpoints</li>
+          <li>Cost optimization and resource management</li>
+          <li>Infrastructure as Code with Terraform</li>
+          <li>Serverless ML with Lambda, Cloud Functions</li>
+        </ul>
+        <h4>Tools Used</h4>
+        <p>AWS SageMaker, Azure ML, GCP Vertex AI, Terraform, Kubernetes, Docker</p>
+        <h4>Outcome</h4>
+        <p>Scalable, cost-effective infrastructure that grows with your needs. 99.9% uptime SLA with automated failover.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="ai">
+    <div class="container">
+      <div class="service-detail">
+        <h3><i class="fa fa-brain"></i> AI/LLM Systems</h3>
+        <h4>Problem</h4>
+        <p>Large language models and AI systems require specialized deployment strategies, prompt engineering, and integration with existing systems.</p>
+        <h4>Solution</h4>
+        <p>Production-ready AI and LLM deployments:</p>
+        <ul>
+          <li>LLM deployment and optimization (GPT, Claude, Llama)</li>
+          <li>RAG (Retrieval Augmented Generation) systems</li>
+          <li>Vector databases and semantic search</li>
+          <li>Custom fine-tuning and model adaptation</li>
+          <li>API development with FastAPI</li>
+          <li>Prompt engineering and optimization</li>
+        </ul>
+        <h4>Tools Used</h4>
+        <p>OpenAI API, Hugging Face, LangChain, Pinecone, Weaviate, FastAPI</p>
+        <h4>Outcome</h4>
+        <p>Intelligent AI systems that integrate seamlessly with your applications and deliver measurable business value.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light" id="devops">
+    <div class="container">
+      <div class="service-detail">
+        <h3><i class="fa fa-infinity"></i> DevOps & CI/CD</h3>
+        <h4>Problem</h4>
+        <p>Traditional DevOps doesn't account for ML-specific needs like data versioning, model testing, and gradual rollouts.</p>
+        <h4>Solution</h4>
+        <p>ML-aware DevOps practices:</p>
+        <ul>
+          <li>CI/CD pipelines for ML code and models</li>
+          <li>Automated testing (unit, integration, model performance)</li>
+          <li>GitOps workflows for infrastructure and models</li>
+          <li>Blue-green and canary deployments for models</li>
+          <li>Container orchestration and management</li>
+          <li>Secrets management and security</li>
+        </ul>
+        <h4>Tools Used</h4>
+        <p>GitHub Actions, Jenkins, GitLab CI, ArgoCD, Docker, Kubernetes</p>
+        <h4>Outcome</h4>
+        <p>Reliable, automated deployments with rollback capabilities. Reduce deployment failures by 90%.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="data">
+    <div class="container">
+      <div class="service-detail">
+        <h3><i class="fa fa-database"></i> Quant / Data Engineering</h3>
+        <h4>Problem</h4>
+        <p>ML models are only as good as their data. Poor data quality, inconsistent features, and slow data pipelines limit model performance.</p>
+        <h4>Solution</h4>
+        <p>Robust data infrastructure for ML:</p>
+        <ul>
+          <li>Scalable data pipelines with Spark and Kafka</li>
+          <li>Real-time and batch processing</li>
+          <li>Data quality monitoring and validation</li>
+          <li>Feature engineering and feature stores</li>
+          <li>Quantitative analysis and backtesting frameworks</li>
+          <li>Data versioning and lineage tracking</li>
+        </ul>
+        <h4>Tools Used</h4>
+        <p>Apache Spark, Kafka, Airflow, dbt, Feast, Great Expectations</p>
+        <h4>Outcome</h4>
+        <p>Clean, reliable data pipelines that feed your models with high-quality features in real-time.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light" id="monitoring">
+    <div class="container">
+      <div class="service-detail">
+        <h3><i class="fa fa-chart-simple"></i> Monitoring & Observability</h3>
+        <h4>Problem</h4>
+        <p>Models degrade over time due to data drift, concept drift, and changing patterns. Without monitoring, you won't know until it's too late.</p>
+        <h4>Solution</h4>
+        <p>Comprehensive ML monitoring:</p>
+        <ul>
+          <li>Model performance tracking and alerting</li>
+          <li>Data drift detection</li>
+          <li>Prediction monitoring and analysis</li>
+          <li>Infrastructure metrics (latency, throughput, errors)</li>
+          <li>Custom dashboards with Grafana</li>
+          <li>Automated retraining triggers</li>
+        </ul>
+        <h4>Tools Used</h4>
+        <p>Prometheus, Grafana, ELK Stack, Evidently AI, WhyLabs</p>
+        <h4>Outcome</h4>
+        <p>Proactive detection of issues before they impact users. Maintain model performance over time with automated interventions.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <h2>Ready to Get Started?</h2>
+      <p>Let's discuss which services are right for your ML infrastructure</p>
+      <a href="index.html#contact" class="btn btn-primary">Book a Consultation</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-col">
+        <a href="index.html" class="logo logo-light"><img src="InnoMLOps.png" alt="InnoMLOps" class="logo-img-footer" /></a>
+        <p>Enterprise MLOps consulting for production-ready ML systems.</p>
+        <div class="social-icons">
+          <a href="https://github.com/SrinathMLOps" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html#mlops">MLOps Engineering</a></li>
+          <li><a href="services.html#cloud">Cloud Architecture</a></li>
+          <li><a href="services.html#ai">AI/LLM Systems</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Solutions</h4>
+        <ul>
+          <li><a href="solutions.html#fintech">AI for FinTech</a></li>
+          <li><a href="solutions.html#healthcare">AI for Healthcare</a></li>
+          <li><a href="solutions.html#retail">AI for Retail</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; 2025 InnoMLOps. All rights reserved. | <a href="privacy.html">Privacy</a> | <a href="terms.html">Terms</a></p>
+      </div>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>
