@@ -207,6 +207,7 @@ ul { list-style: none; }
   background: var(--light);
 }
 .has-dropdown { position: relative; }
+.has-dropdown > a { cursor: pointer; }
 .dropdown {
   position: absolute;
   top: calc(100% + 8px);
@@ -221,7 +222,7 @@ ul { list-style: none; }
   border: 1px solid var(--light);
   z-index: 200;
 }
-.has-dropdown:hover .dropdown { display: flex; }
+.has-dropdown.open .dropdown { display: flex; }
 .dropdown li a {
   display: block;
   padding: 10px 18px;

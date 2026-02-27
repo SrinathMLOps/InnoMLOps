@@ -38,14 +38,31 @@ document.addEventListener('DOMContentLoaded', () => {
     icon.className = mainNav.classList.contains('open') ? 'fa fa-times' : 'fa fa-bars';
   });
 
-  // Mobile dropdown toggle
+  // Desktop and Mobile dropdown toggle
   document.querySelectorAll('.has-dropdown > a').forEach(link => {
     link.addEventListener('click', (e) => {
-      if (window.innerWidth <= 768) {
-        e.preventDefault();
-        link.parentElement.classList.toggle('open');
-      }
+      e.preventDefault();
+      const parent = link.parentElement;
+      
+      // Close other dropdowns
+      document.querySelectorAll('.has-dropdown').forEach(item => {
+        if (item !== parent) {
+          item.classList.remove('open');
+        }
+      });
+      
+      // Toggle current dropdown
+      parent.classList.toggle('open');
     });
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.has-dropdown')) {
+      document.querySelectorAll('.has-dropdown').forEach(item => {
+        item.classList.remove('open');
+      });
+    }
   });
 
   // Close nav when a link is clicked (mobile)
@@ -99,30 +116,58 @@ document.addEventListener('DOMContentLoaded', () => {
         firstName: form.firstName.value,
         lastName: form.lastName.value,
         email: form.email.value,
-        phone: form.phone.value,
+        phone: form.phone?.value || '',
         company: form.company.value,
         service: form.service.value,
-        budget: form.budget.value,
-        message: form.message.value
+        budget: form.budget?.value || '',
+        message: form.message.value,
+        _replyto: form.email.value,
+        _subject: `New Enquiry from ${form.firstName.value} ${form.lastName.value} - ${form.company.value}`
       };
 
-      // ── Send via Formspree (replace YOUR_FORM_ID) ──
-      // Uncomment and add your Formspree endpoint:
-      /*
-      fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      // Show loading state
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalBtnText = submitBtn.innerHTML;
+      submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Sending...';
+      submitBtn.disabled = true;
+
+      // ── Send via FormSubmit (No signup required!) ──
+      // This will send to both email addresses
+      const formData = new FormData();
+      formData.append('firstName', form.firstName.value);
+      formData.append('lastName', form.lastName.value);
+      formData.append('email', form.email.value);
+      formData.append('phone', form.phone?.value || 'Not provided');
+      formData.append('company', form.company.value);
+      formData.append('service', form.service.value);
+      formData.append('budget', form.budget?.value || 'Not specified');
+      formData.append('message', form.message.value);
+      formData.append('_subject', `New Enquiry from ${form.firstName.value} ${form.lastName.value} - ${form.company.value}`);
+      formData.append('_cc', 'contact@innomlopssolutions.com');
+      formData.append('_template', 'table');
+      formData.append('_captcha', 'false');
+
+      fetch('https://formsubmit.co/ceo@innomlopssolutions.com', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(data)
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
       })
       .then(res => {
-        if (res.ok) { showSuccess(); } else { showError(); }
+        submitBtn.innerHTML = originalBtnText;
+        submitBtn.disabled = false;
+        if (res.ok) { 
+          showSuccess(); 
+        } else { 
+          showError(); 
+        }
       })
-      .catch(() => showError());
-      */
-
-      // For now – simulate a successful submission:
-      console.log('Form submitted:', data);
-      showSuccess();
+      .catch(() => {
+        submitBtn.innerHTML = originalBtnText;
+        submitBtn.disabled = false;
+        showError();
+      });
     });
   }
 
