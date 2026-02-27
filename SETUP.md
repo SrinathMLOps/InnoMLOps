@@ -47,8 +47,8 @@ A complete, professional MLOps consulting website with:
 Contact emails are already configured:
 - CEO Email: `ceo@innomlopssolutions.com`
 - General Contact: `contact@innomlopssolutions.com`
-- Add your LinkedIn URL
-- Add your Twitter/X URL
+- LinkedIn: https://www.linkedin.com/company/innomlops-solutions/ (already set)
+- Add your Twitter/X URL if needed
 - GitHub link is set to SrinathMLOps
 
 ### 4. Add Your Logo
