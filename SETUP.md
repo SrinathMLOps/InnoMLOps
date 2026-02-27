@@ -44,11 +44,12 @@ A complete, professional MLOps consulting website with:
 7. Commit and push changes
 
 ### 3. Update Contact Information
-Replace placeholder contact details in all files:
-- Email: `contact@innomlops.com` (update if different)
+Contact emails are already configured:
+- CEO Email: `ceo@innomlopssolutions.com`
+- General Contact: `contact@innomlopssolutions.com`
 - Add your LinkedIn URL
 - Add your Twitter/X URL
-- Update GitHub link (already set to SrinathMLOps)
+- GitHub link is set to SrinathMLOps
 
 ### 4. Add Your Logo
 - Replace `InnoMLOps.png` with your actual logo
@@ -165,7 +166,7 @@ Add Google Analytics:
 
 For questions or issues:
 - GitHub Issues: https://github.com/SrinathMLOps/InnoMLOps/issues
-- Email: contact@innomlops.com
+- Email: ceo@innomlopssolutions.com or contact@innomlopssolutions.com
 
 ## 🎉 You're All Set!
 

@@ -1102,3 +1102,23 @@ ul { list-style: none; }
   .case-study-header { padding: 24px; }
   .case-study-body { padding: 24px; }
 }
+
+/* Email Links */
+.contact-details a {
+  color: var(--secondary);
+  text-decoration: none;
+  transition: var(--transition);
+}
+.contact-details a:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
+.check-list a {
+  color: var(--secondary);
+  text-decoration: none;
+  transition: var(--transition);
+}
+.check-list a:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}

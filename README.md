@@ -31,7 +31,7 @@ Visit [InnoMLOps](https://srinathmlops.github.io/InnoMLOps/) for more informatio
 
 ## Contact
 
-- Email: contact@innomlops.com
+- Email: ceo@innomlopssolutions.com | contact@innomlopssolutions.com
 - GitHub: [@SrinathMLOps](https://github.com/SrinathMLOps)
 
 ## License
