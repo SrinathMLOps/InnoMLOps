@@ -44,35 +44,47 @@ document.addEventListener('DOMContentLoaded', () => {
     const link = dropdown.querySelector('a');
     
     // Desktop hover behavior
-    if (window.innerWidth > 768) {
-      dropdown.addEventListener('mouseenter', () => {
+    dropdown.addEventListener('mouseenter', () => {
+      if (window.innerWidth > 768) {
         dropdown.classList.add('open');
-      });
-      
-      dropdown.addEventListener('mouseleave', () => {
-        dropdown.classList.remove('open');
-      });
-    }
-    
-    // Mobile click behavior
-    link.addEventListener('click', (e) => {
-      if (window.innerWidth <= 768) {
-        e.preventDefault();
-        dropdown.classList.toggle('open');
-      } else {
-        // On desktop, prevent default but allow hover to work
-        e.preventDefault();
       }
+    });
+    
+    dropdown.addEventListener('mouseleave', () => {
+      if (window.innerWidth > 768) {
+        dropdown.classList.remove('open');
+      }
+    });
+    
+    // Click behavior
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      if (window.innerWidth <= 768) {
+        // Mobile: toggle dropdown
+        dropdown.classList.toggle('open');
+      }
+      // Desktop: do nothing (hover handles it)
     });
   });
 
-  // Close dropdown when clicking outside (mobile only)
+  // Close dropdown when clicking anywhere else
   document.addEventListener('click', (e) => {
-    if (window.innerWidth <= 768 && !e.target.closest('.has-dropdown')) {
+    if (!e.target.closest('.has-dropdown')) {
       document.querySelectorAll('.has-dropdown').forEach(item => {
         item.classList.remove('open');
       });
     }
+  });
+
+  // Close dropdowns when clicking other nav links
+  document.querySelectorAll('#mainNav a:not(.has-dropdown a)').forEach(link => {
+    link.addEventListener('click', () => {
+      document.querySelectorAll('.has-dropdown').forEach(item => {
+        item.classList.remove('open');
+      });
+    });
   });
 
   // Re-initialize on window resize
@@ -90,9 +102,17 @@ document.addEventListener('DOMContentLoaded', () => {
   // Close nav when a link is clicked (mobile)
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
+      // Close mobile nav
       if (window.innerWidth <= 768 && !link.closest('.has-dropdown')) {
         mainNav.classList.remove('open');
         navToggle.querySelector('i').className = 'fa fa-bars';
+      }
+      
+      // Close any open dropdowns when clicking non-dropdown links
+      if (!link.closest('.has-dropdown')) {
+        document.querySelectorAll('.has-dropdown').forEach(item => {
+          item.classList.remove('open');
+        });
       }
     });
   });

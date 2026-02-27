@@ -163,8 +163,8 @@ ul { list-style: none; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 14px;
-  padding-bottom: 14px;
+  padding-top: 16px;
+  padding-bottom: 16px;
   gap: 24px;
 }
 
@@ -175,11 +175,11 @@ ul { list-style: none; }
   gap: 10px;
 }
 .logo-img {
-  height: 45px;
+  height: 55px;
   width: auto;
 }
 .logo-img-footer {
-  height: 40px;
+  height: 50px;
   width: auto;
   filter: brightness(0) invert(1);
 }
@@ -670,6 +670,9 @@ ul { list-style: none; }
   .form-row { grid-template-columns: 1fr; }
   .contact-form-wrap { padding: 24px; }
   .topbar-inner { flex-direction: column; text-align: center; }
+
+  .logo-img { height: 48px; }
+  .logo-img-footer { height: 45px; }
 
   .nav-toggle { display: block; }
   #mainNav {
