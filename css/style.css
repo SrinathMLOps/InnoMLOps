@@ -591,13 +591,9 @@ ul { list-style: none; }
   border-color: var(--secondary);
   box-shadow: 0 0 0 3px rgba(52,152,219,0.1);
 }
-.form-group input:invalid:not(:placeholder-shown),
-.form-group textarea:invalid:not(:placeholder-shown) {
-  border-color: #e53935;
-}
-.form-group input:valid:not(:placeholder-shown),
-.form-group textarea:valid:not(:placeholder-shown) {
-  border-color: var(--success);
+.form-group input:invalid,
+.form-group textarea:invalid {
+  border-color: var(--light);
 }
 .form-group textarea { resize: vertical; }
 .form-check {

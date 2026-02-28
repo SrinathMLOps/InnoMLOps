@@ -123,6 +123,33 @@ document.addEventListener('DOMContentLoaded', () => {
   const formError = document.getElementById('formError');
 
   if (form) {
+    // Real-time validation for name fields (block numbers and special chars)
+    const firstNameInput = document.getElementById('firstName');
+    const lastNameInput = document.getElementById('lastName');
+    
+    if (firstNameInput) {
+      firstNameInput.addEventListener('input', (e) => {
+        // Remove any character that is not a letter, space, hyphen, or apostrophe
+        e.target.value = e.target.value.replace(/[^A-Za-z\s\-']/g, '');
+      });
+    }
+    
+    if (lastNameInput) {
+      lastNameInput.addEventListener('input', (e) => {
+        // Remove any character that is not a letter, space, hyphen, or apostrophe
+        e.target.value = e.target.value.replace(/[^A-Za-z\s\-']/g, '');
+      });
+    }
+
+    // Real-time validation for company name
+    const companyInput = document.getElementById('company');
+    if (companyInput) {
+      companyInput.addEventListener('input', (e) => {
+        // Allow letters, numbers, spaces, and basic punctuation only
+        e.target.value = e.target.value.replace(/[^A-Za-z0-9\s\-&.,()]/g, '');
+      });
+    }
+
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       formSuccess.style.display = 'none';
@@ -146,15 +173,28 @@ document.addEventListener('DOMContentLoaded', () => {
       const firstName = document.getElementById('firstName');
       const lastName = document.getElementById('lastName');
       
-      if (firstName && !nameRegex.test(firstName.value.trim())) {
+      if (firstName && firstName.value.trim().length > 0 && !nameRegex.test(firstName.value.trim())) {
         firstName.style.borderColor = '#e53935';
-        errorMessage = 'First name should only contain letters, spaces, hyphens, or apostrophes.';
+        errorMessage = 'First name should only contain letters (no numbers or special characters).';
         valid = false;
       }
       
-      if (lastName && !nameRegex.test(lastName.value.trim())) {
+      if (lastName && lastName.value.trim().length > 0 && !nameRegex.test(lastName.value.trim())) {
         lastName.style.borderColor = '#e53935';
-        errorMessage = 'Last name should only contain letters, spaces, hyphens, or apostrophes.';
+        errorMessage = 'Last name should only contain letters (no numbers or special characters).';
+        valid = false;
+      }
+
+      // Check minimum length for names
+      if (firstName && firstName.value.trim().length < 2) {
+        firstName.style.borderColor = '#e53935';
+        errorMessage = 'First name must be at least 2 characters.';
+        valid = false;
+      }
+      
+      if (lastName && lastName.value.trim().length < 2) {
+        lastName.style.borderColor = '#e53935';
+        errorMessage = 'Last name must be at least 2 characters.';
         valid = false;
       }
 
@@ -170,9 +210,15 @@ document.addEventListener('DOMContentLoaded', () => {
       // Company name validation (letters, numbers, basic punctuation only)
       const companyField = document.getElementById('company');
       const companyRegex = /^[A-Za-z0-9\s\-&.,()]+$/;
-      if (companyField && !companyRegex.test(companyField.value.trim())) {
+      if (companyField && companyField.value.trim().length > 0 && !companyRegex.test(companyField.value.trim())) {
         companyField.style.borderColor = '#e53935';
         errorMessage = 'Company name contains invalid characters.';
+        valid = false;
+      }
+      
+      if (companyField && companyField.value.trim().length < 2) {
+        companyField.style.borderColor = '#e53935';
+        errorMessage = 'Company name must be at least 2 characters.';
         valid = false;
       }
 
@@ -183,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       if (messageField && (messageValue.length < 20 || !hasLetters)) {
         messageField.style.borderColor = '#e53935';
-        errorMessage = 'Project details must be at least 20 characters and contain meaningful text (not just numbers).';
+        errorMessage = 'Project details must be at least 20 characters and contain meaningful text (not just numbers or symbols).';
         valid = false;
       }
 
