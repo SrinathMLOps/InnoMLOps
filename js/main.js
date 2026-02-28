@@ -243,7 +243,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (entries[0].isIntersecting && !counted) {
       counted = true;
       document.querySelectorAll('.stat-item h3').forEach(counter => {
-        const target = counter.textContent;
+        const target = counter.textContent.trim();
+        
+        // Skip animation for percentage and time formats
+        if (target.includes('%') || target.includes('/')) {
+          return; // Keep original text as-is
+        }
+        
         const num = parseInt(target.replace(/\D/g, ''));
         const suffix = target.replace(/[0-9]/g, '');
         let current = 0;
