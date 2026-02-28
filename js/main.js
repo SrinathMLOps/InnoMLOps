@@ -131,6 +131,8 @@ document.addEventListener('DOMContentLoaded', () => {
       // Validate required fields
       const required = form.querySelectorAll('[required]');
       let valid = true;
+      let errorMessage = 'Please fill in all required fields correctly.';
+      
       required.forEach(field => {
         field.style.borderColor = '';
         if (!field.value.trim() || (field.type === 'checkbox' && !field.checked)) {
@@ -139,15 +141,61 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
 
-      // Email format check
+      // Name validation (no numbers or special chars except space, hyphen, apostrophe)
+      const nameRegex = /^[A-Za-z\s\-']+$/;
+      const firstName = document.getElementById('firstName');
+      const lastName = document.getElementById('lastName');
+      
+      if (firstName && !nameRegex.test(firstName.value.trim())) {
+        firstName.style.borderColor = '#e53935';
+        errorMessage = 'First name should only contain letters, spaces, hyphens, or apostrophes.';
+        valid = false;
+      }
+      
+      if (lastName && !nameRegex.test(lastName.value.trim())) {
+        lastName.style.borderColor = '#e53935';
+        errorMessage = 'Last name should only contain letters, spaces, hyphens, or apostrophes.';
+        valid = false;
+      }
+
+      // Email format check (strict validation)
       const emailField = document.getElementById('email');
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (emailField && !emailRegex.test(emailField.value)) {
+      const emailRegex = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/;
+      if (emailField && !emailRegex.test(emailField.value.trim())) {
         emailField.style.borderColor = '#e53935';
+        errorMessage = 'Please enter a valid email address (e.g., name@company.com).';
+        valid = false;
+      }
+
+      // Company name validation (letters, numbers, basic punctuation only)
+      const companyField = document.getElementById('company');
+      const companyRegex = /^[A-Za-z0-9\s\-&.,()]+$/;
+      if (companyField && !companyRegex.test(companyField.value.trim())) {
+        companyField.style.borderColor = '#e53935';
+        errorMessage = 'Company name contains invalid characters.';
+        valid = false;
+      }
+
+      // Project details validation (minimum 20 chars, must contain letters)
+      const messageField = document.getElementById('message');
+      const messageValue = messageField.value.trim();
+      const hasLetters = /[a-zA-Z]/.test(messageValue);
+      
+      if (messageField && (messageValue.length < 20 || !hasLetters)) {
+        messageField.style.borderColor = '#e53935';
+        errorMessage = 'Project details must be at least 20 characters and contain meaningful text (not just numbers).';
+        valid = false;
+      }
+
+      // GDPR checkbox validation
+      const gdprCheckbox = document.getElementById('gdpr');
+      if (gdprCheckbox && !gdprCheckbox.checked) {
+        errorMessage = 'You must agree to the Privacy Policy to continue.';
         valid = false;
       }
 
       if (!valid) {
+        formError.textContent = errorMessage;
         formError.style.display = 'flex';
         formError.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         return;

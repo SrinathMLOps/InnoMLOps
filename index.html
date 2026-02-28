@@ -280,20 +280,38 @@
           <div class="form-row">
             <div class="form-group">
               <label for="firstName">First Name *</label>
-              <input type="text" id="firstName" name="firstName" placeholder="John" required />
+              <input type="text" id="firstName" name="firstName" placeholder="John" 
+                     pattern="^[A-Za-z\s\-']+$" 
+                     title="Only letters, spaces, hyphens, and apostrophes allowed"
+                     minlength="2"
+                     maxlength="50"
+                     required />
             </div>
             <div class="form-group">
               <label for="lastName">Last Name *</label>
-              <input type="text" id="lastName" name="lastName" placeholder="Smith" required />
+              <input type="text" id="lastName" name="lastName" placeholder="Smith" 
+                     pattern="^[A-Za-z\s\-']+$" 
+                     title="Only letters, spaces, hyphens, and apostrophes allowed"
+                     minlength="2"
+                     maxlength="50"
+                     required />
             </div>
           </div>
           <div class="form-group">
             <label for="email">Email Address *</label>
-            <input type="email" id="email" name="email" placeholder="john@company.com" required />
+            <input type="email" id="email" name="email" placeholder="john@company.com" 
+                   pattern="^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$"
+                   title="Please enter a valid email address"
+                   required />
           </div>
           <div class="form-group">
             <label for="company">Company Name *</label>
-            <input type="text" id="company" name="company" placeholder="Your Company Ltd" required />
+            <input type="text" id="company" name="company" placeholder="Your Company Ltd" 
+                   pattern="^[A-Za-z0-9\s\-&.,()]+$"
+                   title="Only letters, numbers, spaces, and basic punctuation allowed"
+                   minlength="2"
+                   maxlength="100"
+                   required />
           </div>
           <div class="form-group">
             <label for="service">Service Required *</label>
@@ -308,8 +326,12 @@
             </select>
           </div>
           <div class="form-group">
-            <label for="message">Project Details *</label>
-            <textarea id="message" name="message" rows="5" placeholder="Tell us about your ML infrastructure challenges..." required></textarea>
+            <label for="message">Project Details * (minimum 20 characters)</label>
+            <textarea id="message" name="message" rows="5" 
+                      placeholder="Tell us about your ML infrastructure challenges..." 
+                      minlength="20"
+                      maxlength="2000"
+                      required></textarea>
           </div>
           <div class="form-group form-check">
             <input type="checkbox" id="gdpr" name="gdpr" required />
