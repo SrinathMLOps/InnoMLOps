@@ -132,12 +132,24 @@ document.addEventListener('DOMContentLoaded', () => {
         // Remove any character that is not a letter, space, hyphen, or apostrophe
         e.target.value = e.target.value.replace(/[^A-Za-z\s\-']/g, '');
       });
+      
+      // Validate on blur (when leaving the field)
+      firstNameInput.addEventListener('blur', () => {
+        validateField(firstNameInput, 'firstNameError', 
+          'First name must be at least 2 letters (no numbers or special characters)');
+      });
     }
     
     if (lastNameInput) {
       lastNameInput.addEventListener('input', (e) => {
         // Remove any character that is not a letter, space, hyphen, or apostrophe
         e.target.value = e.target.value.replace(/[^A-Za-z\s\-']/g, '');
+      });
+      
+      // Validate on blur
+      lastNameInput.addEventListener('blur', () => {
+        validateField(lastNameInput, 'lastNameError', 
+          'Last name must be at least 2 letters (no numbers or special characters)');
       });
     }
 
@@ -148,6 +160,111 @@ document.addEventListener('DOMContentLoaded', () => {
         // Allow letters, numbers, spaces, and basic punctuation only
         e.target.value = e.target.value.replace(/[^A-Za-z0-9\s\-&.,()]/g, '');
       });
+      
+      companyInput.addEventListener('blur', () => {
+        const errorSpan = document.getElementById('companyError');
+        const value = companyInput.value.trim();
+        const hasLetters = /[a-zA-Z]/.test(value);
+        
+        if (!value) {
+          companyInput.classList.add('error');
+          errorSpan.textContent = 'Company name is required';
+        } else if (value.length < 2) {
+          companyInput.classList.add('error');
+          errorSpan.textContent = 'Company name must be at least 2 characters';
+        } else if (!hasLetters) {
+          companyInput.classList.add('error');
+          errorSpan.textContent = 'Company name must contain letters (not just numbers)';
+        } else {
+          companyInput.classList.remove('error');
+          errorSpan.textContent = '';
+        }
+      });
+    }
+
+    // Email validation on blur and input
+    const emailInput = document.getElementById('email');
+    if (emailInput) {
+      emailInput.addEventListener('input', (e) => {
+        // Remove any invalid email characters as user types
+        e.target.value = e.target.value.replace(/[^a-zA-Z0-9._%+\-@]/g, '');
+      });
+      
+      emailInput.addEventListener('blur', () => {
+        const emailRegex = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/;
+        const errorSpan = document.getElementById('emailError');
+        
+        if (emailInput.value.trim() && !emailRegex.test(emailInput.value.trim())) {
+          emailInput.classList.add('error');
+          errorSpan.textContent = 'Please enter a valid email address (e.g., name@company.com)';
+        } else if (!emailInput.value.trim()) {
+          emailInput.classList.add('error');
+          errorSpan.textContent = 'Email address is required';
+        } else {
+          emailInput.classList.remove('error');
+          errorSpan.textContent = '';
+        }
+      });
+    }
+
+    // Service validation on change
+    const serviceInput = document.getElementById('service');
+    if (serviceInput) {
+      serviceInput.addEventListener('change', () => {
+        const errorSpan = document.getElementById('serviceError');
+        if (!serviceInput.value) {
+          serviceInput.classList.add('error');
+          errorSpan.textContent = 'Please select a service';
+        } else {
+          serviceInput.classList.remove('error');
+          errorSpan.textContent = '';
+        }
+      });
+    }
+
+    // Message validation on blur
+    const messageInput = document.getElementById('message');
+    if (messageInput) {
+      messageInput.addEventListener('blur', () => {
+        const errorSpan = document.getElementById('messageError');
+        const value = messageInput.value.trim();
+        const hasLetters = /[a-zA-Z]/.test(value);
+        
+        if (!value) {
+          messageInput.classList.add('error');
+          errorSpan.textContent = 'Project details are required';
+        } else if (value.length < 20) {
+          messageInput.classList.add('error');
+          errorSpan.textContent = 'Project details must be at least 20 characters';
+        } else if (!hasLetters) {
+          messageInput.classList.add('error');
+          errorSpan.textContent = 'Project details must contain text (not just numbers or symbols)';
+        } else {
+          messageInput.classList.remove('error');
+          errorSpan.textContent = '';
+        }
+      });
+    }
+
+    // Helper function to validate name fields
+    function validateField(input, errorId, errorMessage) {
+      const errorSpan = document.getElementById(errorId);
+      const nameRegex = /^[A-Za-z\s\-']+$/;
+      const value = input.value.trim();
+      
+      if (!value) {
+        input.classList.add('error');
+        errorSpan.textContent = errorMessage;
+      } else if (value.length < 2) {
+        input.classList.add('error');
+        errorSpan.textContent = errorMessage;
+      } else if (!nameRegex.test(value)) {
+        input.classList.add('error');
+        errorSpan.textContent = errorMessage;
+      } else {
+        input.classList.remove('error');
+        errorSpan.textContent = '';
+      }
     }
 
     form.addEventListener('submit', (e) => {
@@ -155,95 +272,53 @@ document.addEventListener('DOMContentLoaded', () => {
       formSuccess.style.display = 'none';
       formError.style.display = 'none';
 
-      // Validate required fields
-      const required = form.querySelectorAll('[required]');
+      // Silent validation check (no error display)
       let valid = true;
-      let errorMessage = 'Please fill in all required fields correctly.';
-      
-      required.forEach(field => {
-        field.style.borderColor = '';
-        if (!field.value.trim() || (field.type === 'checkbox' && !field.checked)) {
-          field.style.borderColor = '#e53935';
-          valid = false;
-        }
-      });
 
-      // Name validation (no numbers or special chars except space, hyphen, apostrophe)
+      // Validate names
       const nameRegex = /^[A-Za-z\s\-']+$/;
-      const firstName = document.getElementById('firstName');
-      const lastName = document.getElementById('lastName');
       
-      if (firstName && firstName.value.trim().length > 0 && !nameRegex.test(firstName.value.trim())) {
-        firstName.style.borderColor = '#e53935';
-        errorMessage = 'First name should only contain letters (no numbers or special characters).';
+      if (!firstNameInput.value.trim() || firstNameInput.value.trim().length < 2 || !nameRegex.test(firstNameInput.value.trim())) {
         valid = false;
       }
       
-      if (lastName && lastName.value.trim().length > 0 && !nameRegex.test(lastName.value.trim())) {
-        lastName.style.borderColor = '#e53935';
-        errorMessage = 'Last name should only contain letters (no numbers or special characters).';
+      if (!lastNameInput.value.trim() || lastNameInput.value.trim().length < 2 || !nameRegex.test(lastNameInput.value.trim())) {
         valid = false;
       }
 
-      // Check minimum length for names
-      if (firstName && firstName.value.trim().length < 2) {
-        firstName.style.borderColor = '#e53935';
-        errorMessage = 'First name must be at least 2 characters.';
-        valid = false;
-      }
-      
-      if (lastName && lastName.value.trim().length < 2) {
-        lastName.style.borderColor = '#e53935';
-        errorMessage = 'Last name must be at least 2 characters.';
-        valid = false;
-      }
-
-      // Email format check (strict validation)
-      const emailField = document.getElementById('email');
+      // Validate email
       const emailRegex = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/;
-      if (emailField && !emailRegex.test(emailField.value.trim())) {
-        emailField.style.borderColor = '#e53935';
-        errorMessage = 'Please enter a valid email address (e.g., name@company.com).';
+      if (!emailInput.value.trim() || !emailRegex.test(emailInput.value.trim())) {
         valid = false;
       }
 
-      // Company name validation (letters, numbers, basic punctuation only)
-      const companyField = document.getElementById('company');
-      const companyRegex = /^[A-Za-z0-9\s\-&.,()]+$/;
-      if (companyField && companyField.value.trim().length > 0 && !companyRegex.test(companyField.value.trim())) {
-        companyField.style.borderColor = '#e53935';
-        errorMessage = 'Company name contains invalid characters.';
-        valid = false;
-      }
-      
-      if (companyField && companyField.value.trim().length < 2) {
-        companyField.style.borderColor = '#e53935';
-        errorMessage = 'Company name must be at least 2 characters.';
+      // Validate company
+      const companyValue = companyInput.value.trim();
+      const companyHasLetters = /[a-zA-Z]/.test(companyValue);
+      if (!companyValue || companyValue.length < 2 || !companyHasLetters) {
         valid = false;
       }
 
-      // Project details validation (minimum 20 chars, must contain letters)
-      const messageField = document.getElementById('message');
-      const messageValue = messageField.value.trim();
+      // Validate service
+      if (!serviceInput.value) {
+        valid = false;
+      }
+
+      // Validate message
+      const messageValue = messageInput.value.trim();
       const hasLetters = /[a-zA-Z]/.test(messageValue);
-      
-      if (messageField && (messageValue.length < 20 || !hasLetters)) {
-        messageField.style.borderColor = '#e53935';
-        errorMessage = 'Project details must be at least 20 characters and contain meaningful text (not just numbers or symbols).';
+      if (!messageValue || messageValue.length < 20 || !hasLetters) {
         valid = false;
       }
 
-      // GDPR checkbox validation
+      // Validate GDPR checkbox
       const gdprCheckbox = document.getElementById('gdpr');
-      if (gdprCheckbox && !gdprCheckbox.checked) {
-        errorMessage = 'You must agree to the Privacy Policy to continue.';
+      if (!gdprCheckbox.checked) {
         valid = false;
       }
 
       if (!valid) {
-        formError.textContent = errorMessage;
-        formError.style.display = 'flex';
-        formError.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        // Don't show error message, user already saw errors when leaving fields
         return;
       }
 

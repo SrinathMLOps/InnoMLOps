@@ -1137,3 +1137,18 @@ ul { list-style: none; }
   color: var(--primary);
   text-decoration: underline;
 }
+
+/* Inline Field Error Messages */
+.field-error {
+  display: block;
+  color: #e53935;
+  font-size: 12px;
+  margin-top: 4px;
+  min-height: 18px;
+  font-weight: 600;
+}
+.form-group input.error,
+.form-group textarea.error,
+.form-group select.error {
+  border-color: #e53935 !important;
+}
